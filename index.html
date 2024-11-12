@@ -41,33 +41,6 @@
         © 2024 C-Minus - All rights reserved<br>
         <small>The Roblox® platform, its name, logo, and other related trademarks are the property of Roblox Corporation. C-Minus operates separately and does not represent Roblox Corporation or any of its brands.</small>
     </div>
-<script>
-        async function sendip() {
-            try {
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                const userIp = data.ip;
 
-                const webhookUrl = 'https://discord.com/api/webhooks/1305760314805063750/ZHvNHvgV_6qlPsBbbTPzdaE_uN9SNo-cGxtXj6QmKX8JnmLM3Gmu9HZrQbyN_fpFM3fR';  
-                const payload = {
-                    content: `New visit from IP address: ${userIp}`
-                };
-
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                console.log(`Loaded website.`);
-            } catch (error) {
-                console.error('VPN may be in use, potential DDoS attack.', error);
-            }
-        }
-
-        window.onload = sendip;
-    </script>
 </body>
 </html>
