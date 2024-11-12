@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-Minus Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #070707;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #333;
+        }
+
+        .tab.active {
+            background-color: #555;
+            color: #fff;
+            border-bottom: 2px solid #4a5fdd;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #ddd;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>C-Minus Documentation</h1>
+        <p>A minimalist programming language for simple, low-level coding experiments.</p>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="overview">Overview</div>
+        <div class="tab" data-tab="comments">Comments</div>
+        <div class="tab" data-tab="including">Including Files</div>
+        <div class="tab" data-tab="structure">Basic Structure</div>
+        <div class="tab" data-tab="variables">Variables</div>
+        <div class="tab" data-tab="print">Print Statement</div>
+        <div class="tab" data-tab="control">Control Structures</div>
+        <div class="tab" data-tab="functions">Functions</div>
+        <div class="tab" data-tab="example">Example Program</div>
+        <div class="tab" data-tab="quirks">C-Minus Quirks</div>
+        <div class="tab" data-tab="error-handling">Error Handling</div>
+    </div>
+
+    <div class="content active" id="overview">
+        <h2>Overview</h2>
+        <p>c-minus is a low-level language with a minimal standard library and a very simplified syntax.</p>
+    </div>
+
+    <div class="content" id="comments">
+        <h2>Comments</h2>
+        <p>Use <code>#</code> to write a comment:</p>
+        <pre># This is a single-line comment</pre>
+    </div>
+
+    <div class="content" id="including">
+        <h2>Including Files</h2>
+        <p>Use <code>#add</code> to include other files:</p>
+        <pre>#add myFile.cm</pre>
+    </div>
+
+    <div class="content" id="structure">
+        <h2>Basic Structure</h2>
+        <p>Every c-minus program begins with <code>begin</code> and ends with <code>end</code>:</p>
+        <pre>begin
+    # Your code here
+end</pre>
+    </div>
+
+    <div class="content" id="variables">
+        <h2>Variables</h2>
+        <p>Declare variables with the type and name:</p>
+        <pre>int x = 5;
+float y = 3.14;
+str name = "c-minus";</pre>
+    </div>
+
+    <div class="content" id="print">
+        <h2>Print Statement</h2>
+        <p>Use <code>show</code> to print output:</p>
+        <pre>show "Hello, ", name;</pre>
+    </div>
+
+    <div class="content" id="control">
+        <h2>Control Structures</h2>
+        <h3>If Statement</h3>
+        <pre>if (x > 3) {
+    show "x is greater than 3";
+}</pre>
+
+        <h3>Loop Statement</h3>
+        <pre>repeat 5 {
+    show "This will print five times.";
+}</pre>
+    </div>
+
+    <div class="content" id="functions">
+        <h2>Functions</h2>
+        <p>Define functions using <code>define</code>:</p>
+        <pre>define greet {
+    show "Hello from c-minus!";
+}
+
+greet;</pre>
+    </div>
+
+    <div class="content" id="example">
+        <h2>Example Program</h2>
+        <pre>#add utilities.cm
+
+begin
+    int counter = 0;
+    str greeting = "Hello from c-minus!";
+    
+    show greeting;
+
+    define increaseCounter {
+        counter = counter + 1;
+    }
+
+    repeat 3 {
+        increaseCounter;
+        show "Counter is now ", counter;
+    }
+
+    if (counter >= 3) {
+        show "Counter reached 3!";
+    }
+end</pre>
+    </div>
+
+    <div class="content" id="quirks">
+        <h2>C-Minus Quirks</h2>
+        <p>c-minus is a playful language with intentional limitations, making it fun for small projects.</p>
+    </div>
+
+    <div class="content" id="error-handling">
+        <h2>Error Handling</h2>
+        <p>c-minus lacks error handling. If an error occurs, the program halts without explanation.</p>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
